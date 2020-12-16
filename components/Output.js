@@ -1,25 +1,24 @@
 import React from 'react';
-import { View, Text, Button } from "react-native";
+import { View, Text } from "react-native";
 import { connect } from 'react-redux';
 
-
-class Input extends React.Component {
-
-    handlePress = ()=>
-    {
-        this.props.dispatch({
-            type : "INCREMENT"
-        })
-
+const MaptoState = state => {
+    return{
+        counter : state.counter.value,
+        multiple : state.multiple.anotherValue
     }
+}
+
+class Output extends React.Component {
     render() {
-        console.log(this.props)
+        console.log("Value : ", this.props)
         return (
             <View>
-                <Button onPress={() => this.handlePress()} title="Increment" />
+                <Text>Increment/Decrement Value : {this.props.counter} </Text>
+                <Text>Multiple of 5 Value : {this.props.multiple} </Text>
             </View>
         );
     }
 }
 
-export default connect(null)(Input);
+export default connect(MaptoState)(Output);

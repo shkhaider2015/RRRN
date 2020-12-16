@@ -1,5 +1,8 @@
+import { combineReducers } from "redux";
+
 const initState = {
-    value : 0
+    value : 0,
+    anotherValue : 1,
 };
 
 const CounterReducer = (state=initState, action) =>
@@ -21,5 +24,29 @@ const CounterReducer = (state=initState, action) =>
             return state
     }
 }
+const FiveMultipleReducer = (state=initState, action) =>
+{
+    console.log("Reach Multiple", action.type)
+    switch(action.type)
+    {
+        case "MULTIPLY":
+            return{
+                ...state,
+                anotherValue : state.anotherValue * 5
+            }
+        case "DEVIDE":
+                return{
+                    ...state,
+                    anotherValue : state.anotherValue / 5
+                }
+        default:
+            return state
+    }
+}
 
-export {CounterReducer}
+const Reducers = combineReducers({
+    counter : CounterReducer,
+    multiple : FiveMultipleReducer,
+});
+
+export {Reducers}

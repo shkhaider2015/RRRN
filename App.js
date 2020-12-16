@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from "react-redux";
-import Output from './components/Input';
-import Input from './components/Output';
+import Input from './components/Input';
+import Output from './components/Output';
 import { Store } from "./State/Store";
 
 export default function App() {
