@@ -39,10 +39,10 @@ class Input extends React.Component {
         console.log(this.props)
         return (
             <View style={{ marginTop : 20 }} >
-                <Button onPress={() => this.handlePress()} title="Increment" style={{ }} />
-                <Button onPress={() => this.decrement()} title="Decrement" style={{ marginTop : 10 }} />
-                <Button onPress={() => this.multiply()} title="Multiply" style={{ marginTop : 10 }} />
-                <Button onPress={() => this.devide()} title="Devide" style={{ marginTop : 10 }} />
+                <Button onPress={ () => this.handlePress() } title="Increment" style={{ }} />
+                <Button onPress={ () => this.decrement() } title="Decrement" style={{ marginTop : 10 }} />
+                <Button onPress={ () => this.multiply() } title="Multiply" style={{ marginTop : 10 }} />
+                <Button onPress={ () => this.devide() } title="Devide" style={{ marginTop : 10 }} />
             </View>
         );
     }

@@ -3,6 +3,9 @@ import { combineReducers } from "redux";
 const initState = {
     value : 0,
     anotherValue : 1,
+    items : [],
+    loading : false,
+    error : null
 };
 
 const CounterReducer = (state=initState, action) =>
@@ -44,9 +47,38 @@ const FiveMultipleReducer = (state=initState, action) =>
     }
 }
 
+const ProductReducer = (state = initState, action) =>
+{
+    switch(action.type)
+    {
+        case 'FETCH_PRODUCT_BEGIN':
+            return{
+                ...state,
+                loading : true,
+                error : null
+            };
+        case 'FETCH_PRODUC_SUCCESS':
+            return{
+                ...state,
+                loading : false,
+                items : action.payload.products
+            };
+        case 'FETCH_PRODUCT_FAILURE':
+            return{
+                ...state,
+                loading : false,
+                error : action.payload.error,
+                items : [],
+            };
+        default:
+            return state
+    }
+}
+
 const Reducers = combineReducers({
     counter : CounterReducer,
     multiple : FiveMultipleReducer,
+    products : ProductReducer,
 });
 
 export {Reducers}
